@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{AE08FDDC-2FEB-458D-AFCA-B0D3C29FAE06}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ZorbitsOrbits</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\sdk\public;C:\Box2D;C:\SFML-VS\include;C:\JollyLava-VS\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Box2D\Build\vs2010\bin\Release;C:\sdk\redistributable_bin;C:\SFML-VS\lib;C:\JollyLava-VS\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Box2D.lib;sfml-audio.lib;sfml-graphics.lib;sfml-network.lib;sfml-system.lib;sfml-window.lib;JollyLava.lib;steam_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Achievements.h" />
+    <ClInclude Include="BossHUD.h" />
+    <ClInclude Include="Cinematic.h" />
+    <ClInclude Include="CogHUD.h" />
+    <ClInclude Include="Credits.h" />
+    <ClInclude Include="FrogScreen.h" />
+    <ClInclude Include="GameOver.h" />
+    <ClInclude Include="HealthHUD.h" />
+    <ClInclude Include="LevelSelect.h" />
+    <ClInclude Include="LoadingScreen.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ScoreScreen.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="ZBoinger.h" />
+    <ClInclude Include="ZBooster.h" />
+    <ClInclude Include="ZBoss.h" />
+    <ClInclude Include="ZCheckPoint.h" />
+    <ClInclude Include="ZCircle.h" />
+    <ClInclude Include="ZCog.h" />
+    <ClInclude Include="ZElvisBoss.h" />
+    <ClInclude Include="ZFunzoBoss.h" />
+    <ClInclude Include="ZGlob.h" />
+    <ClInclude Include="ZGlobBat.h" />
+    <ClInclude Include="ZGlobBoss.h" />
+    <ClInclude Include="ZGlobDrop.h" />
+    <ClInclude Include="ZGrapple.h" />
+    <ClInclude Include="ZGrappleChain.h" />
+    <ClInclude Include="ZHappyRock.h" />
+    <ClInclude Include="ZKops.h" />
+    <ClInclude Include="ZKrawlurBoss.h" />
+    <ClInclude Include="ZMovingPlatform.h" />
+    <ClInclude Include="Zorbit.h" />
+    <ClInclude Include="ZorbitLevel.h" />
+    <ClInclude Include="ZorbitMenu.h" />
+    <ClInclude Include="ZorbitsOrbits.h" />
+    <ClInclude Include="ZPlatform.h" />
+    <ClInclude Include="ZRectShape.h" />
+    <ClInclude Include="ZShot.h" />
+    <ClInclude Include="ZSlot.h" />
+    <ClInclude Include="ZSpaceGenerator.h" />
+    <ClInclude Include="ZStrongoBoss.h" />
+    <ClInclude Include="ZTutorialBoss.h" />
+    <ClInclude Include="ZVexBoss.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Achievements.cpp" />
+    <ClCompile Include="BossHUD.cpp" />
+    <ClCompile Include="Cinematic.cpp" />
+    <ClCompile Include="CogHUD.cpp" />
+    <ClCompile Include="Credits.cpp" />
+    <ClCompile Include="FrogScreen.cpp" />
+    <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="HealthHUD.cpp" />
+    <ClCompile Include="LevelSelect.cpp" />
+    <ClCompile Include="LoadingScreen.cpp" />
+    <ClCompile Include="ScoreScreen.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ZBoinger.cpp" />
+    <ClCompile Include="ZBooster.cpp" />
+    <ClCompile Include="ZBoss.cpp" />
+    <ClCompile Include="ZCircle.cpp" />
+    <ClCompile Include="ZCog.cpp" />
+    <ClCompile Include="ZElvisBoss.cpp" />
+    <ClCompile Include="ZFunzoBoss.cpp" />
+    <ClCompile Include="ZGlob.cpp" />
+    <ClCompile Include="ZGlobBat.cpp" />
+    <ClCompile Include="ZGlobBoss.cpp" />
+    <ClCompile Include="ZGlobDrop.cpp" />
+    <ClCompile Include="ZGrapple.cpp" />
+    <ClCompile Include="ZGrappleChain.cpp" />
+    <ClCompile Include="ZHappyRock.cpp" />
+    <ClCompile Include="ZKops.cpp" />
+    <ClCompile Include="ZKrawlurBoss.cpp" />
+    <ClCompile Include="ZMovingPlatform.cpp" />
+    <ClCompile Include="Zorbit.cpp" />
+    <ClCompile Include="ZorbitLevel.cpp" />
+    <ClCompile Include="ZorbitMenu.cpp" />
+    <ClCompile Include="ZorbitsOrbits.cpp" />
+    <ClCompile Include="ZPlatform.cpp" />
+    <ClCompile Include="ZRectShape.cpp" />
+    <ClCompile Include="ZShot.cpp" />
+    <ClCompile Include="ZSlot.cpp" />
+    <ClCompile Include="ZSpaceGenerator.cpp" />
+    <ClCompile Include="ZStrongoBoss.cpp" />
+    <ClCompile Include="ZTutorialBoss.cpp" />
+    <ClCompile Include="ZVexBoss.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ZorbitsOrbits.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico" />
+    <Image Include="ZorbitsOrbits.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
