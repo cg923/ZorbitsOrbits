@@ -4,6 +4,9 @@
 
 #include "JollyLava/Splash.h"
 
+#include "steam/steam_api.h"
+
+#include "Achievements.h"
 #include "ZorbitMenu.h"
 #include "LoadingScreen.h"
 #include "LevelSelect.h"
@@ -14,8 +17,6 @@
 
 void ZorbitsOrbits::initializeStates()
 {
-        //_steamWrapper = new SteamWrapper();
-
         // Splash screen.
         jl::TextureDesc::Ptr tex;
         tex = textureMan()->textureDescIs("resources/zorbitsorbits/splash/splash.png",
@@ -44,6 +45,34 @@ void ZorbitsOrbits::initializeStates()
         _fonts["arial"] = new sf::Font();;
         _fonts["arial"]->loadFromFile("resources/fonts/arial.ttf");
 
+		////////////////////////////////////////////////////
+		//						STEAM					  //
+		///////////////////////////////////////////////////
+
+		// Achievement array which will hold data about the achievements and their state 
+		Achievement_t g_Achievements[] = {
+			_ACH_ID(ACH_ALL_HAPPY, "Happy go rocky"),
+			_ACH_ID(ACH_ALL_COGS, "You're probably the first person to do this"),
+			_ACH_ID(ACH_EASY, "Cool story, bro"),
+			_ACH_ID(ACH_MEDIUM, "Orbiter"),
+			_ACH_ID(ACH_HARD, "Hard as nails"),
+			_ACH_ID(ACH_VERY_HARD, "...Very hard as nails"),
+			_ACH_ID(ACH_INSANE, "Get a job")
+		};
+
+		// Initialize Steam 
+		bool bRet = SteamAPI_Init(); 
+		
+		// Create the SteamAchievements object if Steam was successfully initialized 
+		if (bRet) 
+		{ 
+			_achievements = new CSteamAchievements(g_Achievements, 7);
+		}
+
+		////////////////////////////////////////////////////
+		//					END STEAM					  //
+		///////////////////////////////////////////////////
+		
         _currentLevel = uninitialized;
         _gameOver = false;
         _currentHealth = 0;
@@ -62,7 +91,6 @@ void ZorbitsOrbits::initializeStates()
         stateMan()->stateNew(new LoadingScreen(this));
         stateMan()->stateNew(new LevelSelectScreen(this));
         stateMan()->stateNew(new FrogScreen(this));
-        //stateMan()->stateNew(new ScoreScreen(this));
         stateMan()->queueState("mainmenu");
         stateMan()->queueState("splash2");
         stateMan()->activeStateIs("splash");
@@ -123,8 +151,8 @@ void ZorbitsOrbits::initializeStates()
 
 void ZorbitsOrbits::tearDownConcrete()
 {
-    //delete _steamWrapper;
 }
+
 void ZorbitsOrbits::gameIsOver(bool value)
 {
     if(!value)

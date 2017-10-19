@@ -6,8 +6,8 @@
 // JollyLava
 #include "JollyLava/Game.h"
 
+class CSteamAchievements;
 class LevelSelectScreen;
-//class SteamWrapper;
 
 enum LevelName
 {
@@ -34,6 +34,16 @@ enum Status
     playing,
     not_playing
 };
+
+enum EAchievements { 
+	ACH_ALL_HAPPY = 0, 
+	ACH_ALL_COGS = 1, 
+	ACH_EASY = 2,
+	ACH_MEDIUM = 3, 
+	ACH_HARD = 4,
+	ACH_VERY_HARD = 5,
+	ACH_INSANE = 6,
+}; 
 
 class ZorbitsOrbits : public jl::Game
 {
@@ -147,7 +157,7 @@ private:
     std::map<std::string, bool>         _happyRocks;
     GameModes                           _currentGameMode;
     Status                              _currentStatus;
-    //SteamWrapper*                       _steamWrapper;
+	CSteamAchievements*					_achievements;
 };
 
 #endif

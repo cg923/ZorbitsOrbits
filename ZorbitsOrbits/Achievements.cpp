@@ -1,7 +1,8 @@
 #include "Achievements.h"
 
 CSteamAchievements::CSteamAchievements(Achievement_t *Achievements, int NumAchievements) : 
-	m_iAppID(0), 
+	//m_iAppID(0),
+	m_iAppID(739410),
 	m_bInitialized(false),
 	m_CallbackUserStatsReceived(this, &CSteamAchievements::OnUserStatsReceived), 
 	m_CallbackUserStatsStored(this, &CSteamAchievements::OnUserStatsStored),
