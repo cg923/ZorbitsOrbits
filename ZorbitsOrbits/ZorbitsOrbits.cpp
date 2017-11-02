@@ -153,6 +153,8 @@ void ZorbitsOrbits::gameLoopConcrete() {
 void ZorbitsOrbits::setAchievement(std::string achievement) {
 	if (!_achievements) return;
 
+	std::cout << "Achievement: " << achievement << std::endl;
+
 	if (achievement.compare("cogs") == 0) {
 		_achievements->SetAchievement("ACH_ALL_COGS");
 	}

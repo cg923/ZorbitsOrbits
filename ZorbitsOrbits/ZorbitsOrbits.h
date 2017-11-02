@@ -157,6 +157,8 @@ public:
 
 private:
     bool                                _gameOver;
+	int									_currentCogs;
+	const int							TOTAL_COGS = 887;
     int                                 _currentHealth;
     std::map<std::string, bool>         _happyRocks;
     GameModes                           _currentGameMode;

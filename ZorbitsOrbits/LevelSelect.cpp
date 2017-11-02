@@ -686,6 +686,10 @@ std::string LevelSelectScreen::generateCogsText(std::string levelName)
     return ss.str();
 }
 
+int LevelSelectScreen::totalCogs(std::string levelName) {
+	return _cogNumbers[levelName];
+}
+
 std::string LevelSelectScreen::generateHrText(std::string levelName)
 {
     std::stringstream ss;

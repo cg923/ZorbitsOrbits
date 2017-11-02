@@ -77,6 +77,7 @@ public:
     void setDifficultyIfBetter(std::string levelName, std::string newDif);
     void setCogsIfBetter(std::string levelName, int cogs);
     void setTimeIfFaster(std::string levelName, std::string value);
+	int totalCogs(std::string levelName);
 
     // ---------------------------------------------------
 

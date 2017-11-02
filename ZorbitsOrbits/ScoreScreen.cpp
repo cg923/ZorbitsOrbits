@@ -155,6 +155,13 @@ void ScoreScreen::setStats(std::string levelName,
     ss.str("");
     if(atoi(_cogs.c_str()) > static_cast<LevelSelectScreen*>(_level->game()->stateMan()->state("LevelSelect").ptr())->_levelStats[levelName].cogsFound) _cogsRecord = true;
 
+	// All cogs have been collected for this level.
+	if (atoi(_cogs.c_str()) == static_cast<LevelSelectScreen*>(_level->game()->stateMan()->state("LevelSelect").ptr())->totalCogs(levelName)
+		&& atoi(_cogs.c_str()) + static_cast<LevelSelectScreen*>(_level->game()->stateMan()->state("LevelSelect").ptr())->totalCogsCollected() - static_cast<LevelSelectScreen*>(_level->game()->stateMan()->state("LevelSelect").ptr())->_levelStats[levelName].cogsFound >= 887) {
+		// All cogs have been collected throughout the game.
+		static_cast<ZorbitsOrbits*>(_level->game())->setAchievement("cogs");
+	}	
+
     // TIME
     ss << "Time completed: " << _time; // << " / " << static_cast<LevelSelectScreen*>(_level->game()->stateMan()->state("LevelSelect").ptr())->generateTimeText2(levelName);
     _timeText.setString(ss.str());
