@@ -1,8 +1,9 @@
+#include <iostream>
+
 #include "Achievements.h"
 
 CSteamAchievements::CSteamAchievements(Achievement_t *Achievements, int NumAchievements) : 
-	//m_iAppID(0),
-	m_iAppID(739410),
+	m_iAppID(0),
 	m_bInitialized(false),
 	m_CallbackUserStatsReceived(this, &CSteamAchievements::OnUserStatsReceived), 
 	m_CallbackUserStatsStored(this, &CSteamAchievements::OnUserStatsStored),
@@ -22,7 +23,7 @@ bool CSteamAchievements::RequestStats()
 	// Is the user logged on?  If not we can't get stats. 
 	if ( !SteamUser()->BLoggedOn() ) { return false; } 
 	
-	// Request user stats. 
+	// Request user stats.
 	return SteamUserStats()->RequestCurrentStats(); 
 }
 

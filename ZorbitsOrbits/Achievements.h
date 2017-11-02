@@ -28,7 +28,7 @@ private:
 public: 
 	CSteamAchievements(Achievement_t *Achievements, int NumAchievements); 
 
-	~CSteamAchievements(); 
+	~CSteamAchievements() {};
 
 	bool RequestStats();
 

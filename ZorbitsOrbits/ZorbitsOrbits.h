@@ -53,6 +53,8 @@ public:
 
     void initializeStates();
 
+	void gameLoopConcrete();
+
     void tearDownConcrete();
 
     void loadNextLevel() {}
@@ -96,6 +98,8 @@ public:
     void currentLevelIs(LevelName input) { _currentLevel = input; }
 
     void clearLevelNames() { _levelNames.clear();   }
+
+	void setAchievement(std::string achievement);
 
     void foundHR(std::string level) { _happyRocks[level] = true; }
 

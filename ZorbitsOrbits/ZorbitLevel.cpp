@@ -312,14 +312,14 @@ void ZorbitLevel::processInputConcrete(sf::Event sfevent)
         switch(sfevent.key.code)
         {
             // DEMO
-            
+            /*
             case sf::Keyboard::Z:
                 _camera->zoomOut();
                 break;
             case sf::Keyboard::X:
                 _camera->zoomIn();
                 break;
-            
+            */
             case sf::Keyboard::Escape:
                 //entityMan()->pauseAllChronometers();
                 if(_scoreScreen->active()) break;
@@ -327,7 +327,7 @@ void ZorbitLevel::processInputConcrete(sf::Event sfevent)
                 static_cast<ZorbitMenu*>(game()->stateMan()->state("mainmenu").ptr())->selectionIs(Play);
                 game()->stateMan()->activeStateIs("mainmenu");
                 break;
-                
+            /*    
             case sf::Keyboard::Num1:
                 zorbit->setPosition(checkPointPosition(1));
                 break;
@@ -367,7 +367,7 @@ void ZorbitLevel::processInputConcrete(sf::Event sfevent)
             case sf::Keyboard::Num8:
                 soundMan()->mute();
                 break;
-            
+            */
             case sf::Keyboard::Return:
                 if(_bullocked)
                 {
@@ -377,10 +377,10 @@ void ZorbitLevel::processInputConcrete(sf::Event sfevent)
                 if(_scoreScreen->active() && !_scoreScreen->fadeIn())
                     _scoreScreen->finish();
                 break;
-                /*
+                
             case sf::Keyboard::P:
-                std::cout << entityMan()->countType("Cog") << std::endl;
-                break;*/
+				static_cast<ZorbitsOrbits*>(game())->setAchievement("cogs");
+                break;
             default:
                 break;
         }

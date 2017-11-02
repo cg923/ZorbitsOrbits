@@ -42,9 +42,6 @@ void ZorbitsOrbits::initializeStates()
         _fonts["foo"] = new sf::Font();;
         _fonts["foo"]->loadFromFile("resources/fonts/foo.ttf");
 
-        _fonts["arial"] = new sf::Font();;
-        _fonts["arial"]->loadFromFile("resources/fonts/arial.ttf");
-
 		////////////////////////////////////////////////////
 		//						STEAM					  //
 		///////////////////////////////////////////////////
@@ -52,12 +49,12 @@ void ZorbitsOrbits::initializeStates()
 		// Achievement array which will hold data about the achievements and their state 
 		Achievement_t g_Achievements[] = {
 			_ACH_ID(ACH_ALL_HAPPY, "Happy go rocky"),
-			_ACH_ID(ACH_ALL_COGS, "You're probably the first person to do this"),
+			_ACH_ID(ACH_ALL_COGS, "Cog-ratulations!"),
 			_ACH_ID(ACH_EASY, "Cool story, bro"),
 			_ACH_ID(ACH_MEDIUM, "Orbiter"),
 			_ACH_ID(ACH_HARD, "Hard as nails"),
 			_ACH_ID(ACH_VERY_HARD, "...Very hard as nails"),
-			_ACH_ID(ACH_INSANE, "Get a job")
+			_ACH_ID(ACH_INSANE, "Get a job. Go outside.")
 		};
 
 		// Initialize Steam 
@@ -149,8 +146,25 @@ void ZorbitsOrbits::initializeStates()
         //settings()->encryptFile("levels/junkyard/events/platformstop14.txt");
 }
 
+void ZorbitsOrbits::gameLoopConcrete() {
+	SteamAPI_RunCallbacks();
+}
+
+void ZorbitsOrbits::setAchievement(std::string achievement) {
+	if (!_achievements) return;
+
+	if (achievement.compare("cogs") == 0) {
+		_achievements->SetAchievement("ACH_ALL_COGS");
+	}
+}
+
 void ZorbitsOrbits::tearDownConcrete()
 {
+	// Shutdown Steam 
+	SteamAPI_Shutdown();
+	
+	// Delete the SteamAchievements object 
+	if (_achievements) delete _achievements;
 }
 
 void ZorbitsOrbits::gameIsOver(bool value)
