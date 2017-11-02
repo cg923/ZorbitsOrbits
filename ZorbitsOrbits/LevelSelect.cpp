@@ -978,6 +978,20 @@ int LevelSelectScreen::totalCogsCollected()
     return cogs;
 }
 
+int LevelSelectScreen::totalHappyRocksCollected()
+{
+	int rocks = 0;
+	if (_levelStats["tutorial"].happyRockFound) rocks += 1;
+	if (_levelStats["highway"].happyRockFound) rocks += 1;
+	if (_levelStats["wondercog"].happyRockFound) rocks += 1;
+	if (_levelStats["vegas"].happyRockFound) rocks += 1;
+	if (_levelStats["junkyard"].happyRockFound) rocks += 1;
+	if (_levelStats["jungle"].happyRockFound) rocks += 1;
+	if (_levelStats["roboruins"].happyRockFound) rocks += 1;
+
+	return rocks;
+}
+
 void LevelSelectScreen::update()
 {
     if (determineLastLevelBeaten() == none_s) _unlockSprite.setPosition(_higScreenSprite.getPosition());

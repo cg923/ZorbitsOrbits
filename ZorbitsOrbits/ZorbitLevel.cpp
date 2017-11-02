@@ -377,10 +377,10 @@ void ZorbitLevel::processInputConcrete(sf::Event sfevent)
                 if(_scoreScreen->active() && !_scoreScreen->fadeIn())
                     _scoreScreen->finish();
                 break;
-                
+            /*    
             case sf::Keyboard::P:
 				static_cast<ZorbitsOrbits*>(game())->setAchievement("cogs");
-                break;
+                break;*/
             default:
                 break;
         }

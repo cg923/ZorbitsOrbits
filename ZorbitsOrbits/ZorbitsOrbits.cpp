@@ -158,6 +158,30 @@ void ZorbitsOrbits::setAchievement(std::string achievement) {
 	if (achievement.compare("cogs") == 0) {
 		_achievements->SetAchievement("ACH_ALL_COGS");
 	}
+
+	if (achievement.compare("rocks") == 0) {
+		_achievements->SetAchievement("ACH_ALL_HAPPY");
+	}
+
+	if (achievement.compare("easy") == 0) {
+		_achievements->SetAchievement("ACH_EASY");
+	}
+
+	if (achievement.compare("medium") == 0) {
+		_achievements->SetAchievement("ACH_MEDIUM");
+	}
+
+	if (achievement.compare("hard") == 0) {
+		_achievements->SetAchievement("ACH_HARD");
+	}
+
+	if (achievement.compare("very hard") == 0) {
+		_achievements->SetAchievement("ACH_VERY_HARD");
+	}
+
+	if (achievement.compare("insane") == 0) {
+		_achievements->SetAchievement("ACH_INSANE");
+	}
 }
 
 void ZorbitsOrbits::tearDownConcrete()

@@ -146,6 +146,25 @@ void ScoreScreen::setStats(std::string levelName,
         _difficultyText.setString(ss.str());
         ss.str("");
         _difficultyRecord = isDifficultyARecord(levelName, _difficulty);
+
+		// Beat the whole game
+		if (_levelName.compare("boss") == 0) {
+			if (_difficulty.compare("Easy") == 0) {
+				static_cast<ZorbitsOrbits*>(_level->game())->setAchievement("easy");
+			}
+			if (_difficulty.compare("Medium") == 0) {
+				static_cast<ZorbitsOrbits*>(_level->game())->setAchievement("medium");
+			}
+			if (_difficulty.compare("Hard") == 0) {
+				static_cast<ZorbitsOrbits*>(_level->game())->setAchievement("hard");
+			}
+			if (_difficulty.compare("Very Hard") == 0) {
+				static_cast<ZorbitsOrbits*>(_level->game())->setAchievement("very hard");
+			}
+			if (_difficulty.compare("Insane") == 0) {
+				static_cast<ZorbitsOrbits*>(_level->game())->setAchievement("insane");
+			}
+		}
     }
     else _difficultyText.setString("Difficulty: Can only be set in story mode!");
 
@@ -172,12 +191,14 @@ void ScoreScreen::setStats(std::string levelName,
     if(_happyRock) ss << "Happyrock Found: Yes!"; // / ";
     else ss << "Happyrock Found: No!"; // / ";
 
-    //if(static_cast<LevelSelectScreen*>(_level->game()->stateMan()->state("LevelSelect").ptr())->_levelStats[levelName].happyRockFound) ss << "Yes!";
-    //else ss << "No!";
     _happyRockText.setString(ss.str());
     ss.str("");
-    if(_happyRock && !static_cast<LevelSelectScreen*>(_level->game()->stateMan()->state("LevelSelect").ptr())->_levelStats[levelName].happyRockFound)
-    _happyRecord = true;
+	if (_happyRock && !static_cast<LevelSelectScreen*>(_level->game()->stateMan()->state("LevelSelect").ptr())->_levelStats[levelName].happyRockFound) {
+		_happyRecord = true;
+		if (static_cast<LevelSelectScreen*>(_level->game()->stateMan()->state("LevelSelect").ptr())->totalHappyRocksCollected() == 6) {
+			static_cast<ZorbitsOrbits*>(_level->game())->setAchievement("rocks");
+		}
+	} 
 
     if(static_cast<ZorbitsOrbits*>(_level->game())->_fastMode || static_cast<ZorbitsOrbits*>(_level->game())->_godMode)
     {

@@ -92,6 +92,7 @@ public:
 
     void unlockAllLevels();
     int totalCogsCollected();
+	int totalHappyRocksCollected();
 
     // ---------------------------------------------------
 
