@@ -51,18 +51,20 @@ void CSteamAchievements::OnUserStatsReceived(UserStatsReceived_t *pCallback)
 			m_bInitialized = true; 
 			
 			// load achievements 
+			/*
 			for ( int iAch = 0; iAch < m_iNumAchievements; ++iAch ) 
 			{ 
 				Achievement_t &ach = m_pAchievements[iAch]; 
 				
 				SteamUserStats()->GetAchievement(ach.m_pchAchievementID, &ach.m_bAchieved);
+
 				_snprintf( ach.m_rgchName, sizeof(ach.m_rgchName), "%s", 
 					SteamUserStats()->GetAchievementDisplayAttribute(ach.m_pchAchievementID, 
 						"name")); 
 				_snprintf( ach.m_rgchDescription, sizeof(ach.m_rgchDescription), "%s", 
 					SteamUserStats()->GetAchievementDisplayAttribute(ach.m_pchAchievementID, 
 						"desc")); 
-			} 
+			} */
 		} 
 		else 
 		{ 
