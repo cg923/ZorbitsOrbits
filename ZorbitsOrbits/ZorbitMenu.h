@@ -25,6 +25,7 @@ enum SettingsSelection
     Difficulty,
     MusicVolume,
     SoundVolume,
+	Vsync,
     Controls,
     Accept,
     Discard,
@@ -157,6 +158,7 @@ private:
     bool                    _musicUp;
     bool                    _soundDown;
     bool                    _musicDown;
+	bool					_vsync;
 
     sf::Vector2f            _settingsPos;
     float                   _settingsScale;
@@ -174,6 +176,8 @@ private:
     sf::Text                _currentMusicVolume;
     sf::Text                SOUND_VOLUME_TEXT;
     sf::Text                _currentSoundVolume;
+	sf::Text				VSYNC_TEXT;
+	sf::Text				_vsyncOnOff;
     sf::Text                CUSTOMIZE_CONTROLS_TEXT;
     sf::Text                ACCEPT_TEXT;
     sf::Text                DISCARD_TEXT;
@@ -216,6 +220,8 @@ private:
     sf::Sprite              _rightArrowSprite3;
     sf::Sprite              _leftArrowSprite4;
     sf::Sprite              _rightArrowSprite4;
+	sf::Sprite				_leftArrowSprite5;
+	sf::Sprite				_rightArrowSprite5;
     sf::Sprite              _shootSprite;
     sf::Sprite              _jumpSprite;
     sf::Sprite              _grappleSprite;

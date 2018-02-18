@@ -29,6 +29,7 @@ ZorbitMenu::ZorbitMenu(ZorbitsOrbits * game, jl::TextureDesc::Ptr tex1, jl::Text
     _fading             = false;
     _chooseDifficulty   = false;
     _draw               = true;
+	_vsync				= true;
     _bounce             = 0;
     _nextX              = 0;
     _previousX          = 0;
@@ -185,7 +186,7 @@ void ZorbitMenu::initializeConcrete()
     MUSIC_VOLUME_TEXT.setFont(*game()->font("foo"));
     MUSIC_VOLUME_TEXT.setCharacterSize(40);
     MUSIC_VOLUME_TEXT.setColor(sf::Color(255,255,255,255));
-    MUSIC_VOLUME_TEXT.setPosition(_settingsPos);
+    MUSIC_VOLUME_TEXT.setPosition(_settingsPos - sf::Vector2f(0, _scale.y*50));
     MUSIC_VOLUME_TEXT.setString("Music Volume:");
 
     _currentMusicVolume.setFont(*game()->font("foo"));
@@ -198,7 +199,7 @@ void ZorbitMenu::initializeConcrete()
 
     SOUND_VOLUME_TEXT.setFont(*game()->font("foo"));
     SOUND_VOLUME_TEXT.setCharacterSize(40);
-    SOUND_VOLUME_TEXT.setPosition(_settingsPos + sf::Vector2f(0, _scale.y*80));
+    SOUND_VOLUME_TEXT.setPosition(_settingsPos + sf::Vector2f(0, _scale.y*30));
     SOUND_VOLUME_TEXT.setString("Sound Volume:");
 
     _currentSoundVolume.setFont(*game()->font("foo"));
@@ -208,9 +209,22 @@ void ZorbitMenu::initializeConcrete()
     ss2 << game()->soundVolume();
     _currentSoundVolume.setString(ss2.str());
 
+	VSYNC_TEXT.setFont(*game()->font("foo"));
+	VSYNC_TEXT.setCharacterSize(40);
+	VSYNC_TEXT.setPosition(_settingsPos + sf::Vector2f(0, _scale.y * 120));
+	VSYNC_TEXT.setString("VSync:");
+
+	_vsyncOnOff.setFont(*game()->font("foo"));
+	_vsyncOnOff.setCharacterSize(40);
+	_vsyncOnOff.setPosition(VSYNC_TEXT.getPosition() + sf::Vector2f(_scale.x * 160, _scale.y * 40));
+	if (game()->verticalSync())
+		_vsyncOnOff.setString("On");
+	else
+		_vsyncOnOff.setString("Off");
+
     CUSTOMIZE_CONTROLS_TEXT.setFont(*game()->font("foo"));
     CUSTOMIZE_CONTROLS_TEXT.setCharacterSize(40);
-    CUSTOMIZE_CONTROLS_TEXT.setPosition(_settingsPos + sf::Vector2f(0, _scale.y*180));
+    CUSTOMIZE_CONTROLS_TEXT.setPosition(_settingsPos + sf::Vector2f(0, _scale.y*220));
     CUSTOMIZE_CONTROLS_TEXT.setString("Customize Controls");
 
     ACCEPT_TEXT.setFont(*game()->font("foo"));
@@ -267,6 +281,8 @@ void ZorbitMenu::initializeConcrete()
     _musicCursorSprite.setColor(sf::Color(255,255,255,255));
     _soundCursorSprite.setColor(sf::Color(255,255,255,80));
     _currentSoundVolume.setColor(sf::Color(255,255,255,80));
+	VSYNC_TEXT.setColor(sf::Color(255, 255, 255, 80));
+	_vsyncOnOff.setColor(sf::Color(255, 255, 255, 80));
     CUSTOMIZE_CONTROLS_TEXT.setColor(sf::Color(255,255,255,80));
     ACCEPT_TEXT.setColor(sf::Color(255,255,255,80));
     DISCARD_TEXT.setColor(sf::Color(255,255,255,80));
@@ -390,18 +406,22 @@ void ZorbitMenu::initializeConcrete()
     _leftArrowSprite2.setTexture(*_arrowDesc->texture());
     _leftArrowSprite3.setTexture(*_arrowDesc->texture());
     _leftArrowSprite4.setTexture(*_arrowDesc->texture());
+	_leftArrowSprite5.setTexture(*_arrowDesc->texture());
     _rightArrowSprite.setTexture(*_arrowDesc->texture());
     _rightArrowSprite2.setTexture(*_arrowDesc->texture());
     _rightArrowSprite3.setTexture(*_arrowDesc->texture());
     _rightArrowSprite4.setTexture(*_arrowDesc->texture());
+	_rightArrowSprite5.setTexture(*_arrowDesc->texture());
     _leftArrowSprite.setOrigin(_arrowDesc->origin());
     _leftArrowSprite2.setOrigin(_arrowDesc->origin());
     _leftArrowSprite3.setOrigin(_arrowDesc->origin());
     _leftArrowSprite4.setOrigin(_arrowDesc->origin());
+	_leftArrowSprite5.setOrigin(_arrowDesc->origin());
     _rightArrowSprite.setOrigin(_arrowDesc->origin());
     _rightArrowSprite2.setOrigin(_arrowDesc->origin());
     _rightArrowSprite3.setOrigin(_arrowDesc->origin());
     _rightArrowSprite4.setOrigin(_arrowDesc->origin());
+	_rightArrowSprite5.setOrigin(_arrowDesc->origin());
     _leftArrowSprite.setPosition(KEYBOARD_CONTROLLER_TEXT.getPosition().x - _scale.x*20,
                                     KEYBOARD_CONTROLLER_TEXT.getPosition().y + _scale.y*30);
     _rightArrowSprite.setPosition(KEYBOARD_CONTROLLER_TEXT.getPosition().x + _scale.x*220,
@@ -418,12 +438,19 @@ void ZorbitMenu::initializeConcrete()
                                     _curDifficulty.getPosition().y + _scale.y*20);
     _rightArrowSprite4.setPosition(_curDifficulty.getPosition().x + _scale.x*190,
                                     _curDifficulty.getPosition().y + _scale.y*20);
+	_leftArrowSprite5.setPosition(_vsyncOnOff.getPosition().x - _scale.x * 20,
+		_vsyncOnOff.getPosition().y + _scale.y * 30);
+	_rightArrowSprite5.setPosition(_vsyncOnOff.getPosition().x + _scale.x * 80,
+		_vsyncOnOff.getPosition().y + _scale.y * 30);
     _leftArrowSprite3.setColor(sf::Color(255,255,255,80));
     _rightArrowSprite3.setColor(sf::Color(255,255,255,80));
+	_leftArrowSprite5.setColor(sf::Color(255, 255, 255, 80));
+	_rightArrowSprite5.setColor(sf::Color(255, 255, 255, 80));
     _leftArrowSprite.setScale(-1,1);
     _leftArrowSprite2.setScale(-1,1);
     _leftArrowSprite3.setScale(-1,1);
     _leftArrowSprite4.setScale(-1,1);
+	_leftArrowSprite5.setScale(-1, 1);
 
     _buttonsDesc = this->game()->textureMan()->textureDescIs("resources/zorbitsorbits/menu/buttons.png",
         sf::Vector2f(100, 25), 300, 50);
@@ -663,9 +690,6 @@ void ZorbitMenu::processInput(sf::Event event)
                     break;
                 case sf::Keyboard::Right:
                 {
-                    //if (_curSettingsSelection == Difficulty
-                    //    && static_cast<ZorbitsOrbits*>(game())->_currentLevel == uninitialized)
-                    //    game()->settings()->nextDifficulty();
                     if (_curSettingsSelection == Accept || _curSettingsSelection == Discard || _curSettingsSelection == Defaults)
                         nextSettingsSelection();
                     if (_curSettingsSelection == MusicVolume && game()->musicVolume() < 100)
@@ -675,13 +699,16 @@ void ZorbitMenu::processInput(sf::Event event)
                         game()->setSoundVolume(game()->soundVolume() + 1);
                         game()->soundMan()->playSound("menubeep");
                     }
+					if (_curSettingsSelection == Vsync)
+					{
+						game()->verticalSyncIs(!game()->verticalSync());
+						if (game()->verticalSync()) _vsyncOnOff.setString("On");
+						else _vsyncOnOff.setString("Off");
+					}
                     break;
                 }
                 case sf::Keyboard::Left:
                 {
-                    //if (_curSettingsSelection == Difficulty
-                    //    && static_cast<ZorbitsOrbits*>(game())->_currentLevel == uninitialized)
-                    //    game()->settings()->prevDifficulty();
                     if (_curSettingsSelection == Accept || _curSettingsSelection == Discard || _curSettingsSelection == Defaults)
                         previousSettingsSelection();
                     if (_curSettingsSelection == MusicVolume && game()->musicVolume() > 0)
@@ -691,6 +718,12 @@ void ZorbitMenu::processInput(sf::Event event)
                         game()->setSoundVolume(game()->soundVolume() - 1);
                         game()->soundMan()->playSound("menubeep");
                     }
+					if (_curSettingsSelection == Vsync)
+					{
+						game()->verticalSyncIs(!game()->verticalSync());
+						if (game()->verticalSync()) _vsyncOnOff.setString("On");
+						else _vsyncOnOff.setString("Off");
+					}
                     break;
                 }
                 case sf::Keyboard::Return:
@@ -1095,13 +1128,24 @@ void ZorbitMenu::nextSettingsSelection()
             MUSIC_VOLUME_TEXT.setColor(sf::Color(255,255,255,80));
             break;
         case SoundVolume:
-            _curSettingsSelection = Controls;
+            _curSettingsSelection = Vsync;
             _soundSliderSprite.setColor(sf::Color(255,255,255,80));
             _soundCursorSprite.setColor(sf::Color(255,255,255,80));
             SOUND_VOLUME_TEXT.setColor(sf::Color(255,255,255,80));
             _currentSoundVolume.setColor(sf::Color(255,255,255,80));
-            CUSTOMIZE_CONTROLS_TEXT.setColor(sf::Color(255,255,255,255));
+            VSYNC_TEXT.setColor(sf::Color(255,255,255,255));
+			_vsyncOnOff.setColor(sf::Color(255, 255, 255, 255));
+			_leftArrowSprite5.setColor(sf::Color(255, 255, 255, 255));
+			_rightArrowSprite5.setColor(sf::Color(255, 255, 255, 255));
             break;
+		case Vsync:
+			_curSettingsSelection = Controls;
+			VSYNC_TEXT.setColor(sf::Color(255, 255, 255, 80));
+			_vsyncOnOff.setColor(sf::Color(255, 255, 255, 80));
+			_leftArrowSprite5.setColor(sf::Color(255, 255, 255, 80));
+			_rightArrowSprite5.setColor(sf::Color(255, 255, 255, 80));
+			CUSTOMIZE_CONTROLS_TEXT.setColor(sf::Color(255, 255, 255, 255));
+			break;
         case Controls:
             _curSettingsSelection = Accept;
             CUSTOMIZE_CONTROLS_TEXT.setColor(sf::Color(255,255,255,80));
@@ -1352,12 +1396,23 @@ void ZorbitMenu::previousSettingsSelection()
 
     switch(_curSettingsSelection)
     {
+	case Vsync:
+		_curSettingsSelection = SoundVolume;
+		_soundSliderSprite.setColor(sf::Color(255, 255, 255, 255));
+		_soundCursorSprite.setColor(sf::Color(255, 255, 255, 255));
+		_currentSoundVolume.setColor(sf::Color(255, 255, 255, 255));
+		SOUND_VOLUME_TEXT.setColor(sf::Color(255, 255, 255, 255));
+		VSYNC_TEXT.setColor(sf::Color(255, 255, 255, 80));
+		_vsyncOnOff.setColor(sf::Color(255, 255, 255, 80));
+		_leftArrowSprite5.setColor(sf::Color(255, 255, 255, 80));
+		_rightArrowSprite5.setColor(sf::Color(255, 255, 255, 80));
+		break;
     case Controls:
-        _curSettingsSelection = SoundVolume;
-        _soundSliderSprite.setColor(sf::Color(255,255,255,255));
-        _soundCursorSprite.setColor(sf::Color(255,255,255,255));
-        _currentSoundVolume.setColor(sf::Color(255,255,255,255));
-        SOUND_VOLUME_TEXT.setColor(sf::Color(255,255,255,255));
+        _curSettingsSelection = Vsync;
+        VSYNC_TEXT.setColor(sf::Color(255,255,255,255));
+        _vsyncOnOff.setColor(sf::Color(255,255,255,255));
+        _leftArrowSprite5.setColor(sf::Color(255,255,255,255));
+        _rightArrowSprite5.setColor(sf::Color(255,255,255,255));
         CUSTOMIZE_CONTROLS_TEXT.setColor(sf::Color(255,255,255,80));
         break;
     case Accept:
@@ -1826,7 +1881,7 @@ void ZorbitMenu::update()
 
     if(_fading)
     {
-        int interval = 3;
+		int interval = 3;// * 60 / fps();
         if(_fadeSprite.getColor().a + interval <= 255)
             _fadeSprite.setColor(sf::Color(255,255,255,_fadeSprite.getColor().a + interval));
         else _fadeSprite.setColor(sf::Color(255,255,255,255));
@@ -2168,6 +2223,10 @@ void ZorbitMenu::draw()
             game()->renderWindow()->draw(_currentSoundVolume);
             game()->renderWindow()->draw(_soundSliderSprite);
             game()->renderWindow()->draw(_soundCursorSprite);
+			game()->renderWindow()->draw(VSYNC_TEXT);
+			game()->renderWindow()->draw(_vsyncOnOff);
+			game()->renderWindow()->draw(_leftArrowSprite5);
+			game()->renderWindow()->draw(_rightArrowSprite5);
             game()->renderWindow()->draw(CUSTOMIZE_CONTROLS_TEXT);
         }
         else

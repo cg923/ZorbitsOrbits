@@ -114,6 +114,7 @@ void ZorbitsOrbits::initializeStates()
         //stateMan()->stateNew(new Credits(this));
         //stateMan()->activeStateIs("mainmenu");
 
+		//settings()->encryptFile("util/settings_decrypted.txt");
         //settings()->encryptFile("levels/stats_decrypted_blank.txt");
         //settings()->encryptFile("levels/tutorial/tutorial.txt");
         //settings()->encryptFile("levels/tutorial/events/planet4.txt");

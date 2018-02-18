@@ -49,7 +49,7 @@ class ZorbitsOrbits : public jl::Game
 {
 public:
 
-    ZorbitsOrbits(): jl::Game("Zorbits Orbits", sf::VideoMode::getDesktopMode(), 60.0f){}
+    ZorbitsOrbits(): jl::Game("Zorbits Orbits", sf::VideoMode::getDesktopMode(), true){}
 
     void initializeStates();
 
